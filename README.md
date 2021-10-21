@@ -96,7 +96,7 @@ Snyk products all provide a developer-friendly experience, so Snyk Code helps de
 
 ![alt tag](https://i.ibb.co/R7QF6Ty/snyk-code-7.png)
 
-###Do you think you could fix this issue now?
+### Do you think you could fix this issue now?
 
 ## Step 5 Snyk Code CLI Test
 
