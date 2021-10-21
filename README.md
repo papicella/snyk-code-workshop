@@ -100,11 +100,244 @@ Snyk products all provide a developer-friendly experience, so Snyk Code helps de
 
 ## Step 5 Snyk Code CLI Test
 
-TODO://
+In addition to the Snyk App UI we also have, snyk - CLI and build-time tool to find & fix known vulnerabilities in open-source dependencies, IaC configuration files and SAST scans on the source code files itself (Snyk Code).
+
+_Note: Please ensure you have the latest version of the Snyk CLI installed a version equal to or greater than the version below_
+
+```bash
+$ snyk --version
+1.725.0
+```
+
+* Authorize the Snyk CLI with your account as follows
+
+```bash
+$ snyk auth
+
+Now redirecting you to our auth page, go ahead and log in,
+and once the auth is complete, return to this prompt and you'll
+be ready to start using snyk.
+
+If you can't wait use this url:
+https://snyk.io/login?token=ff75a099-4a9f-4b3d-b75c-bf9847672e9c&utm_medium=cli&utm_source=cli&utm_campaign=cli&os=darwin&docker=false
+
+
+Your account has been authenticated. Snyk is now ready to be used.
+```
+
+* Clone your forked repository as shown below. You can use your own GitHub forked repo here instead of the one shown below if you like
+
+```shell
+❯ git clone https://github.com/papicella/springbootemployee-api
+Cloning into 'springbootemployee-api'...
+remote: Enumerating objects: 163, done.
+remote: Counting objects: 100% (163/163), done.
+remote: Compressing objects: 100% (96/96), done.
+remote: Total 163 (delta 43), reused 145 (delta 27), pack-reused 0
+Receiving objects: 100% (163/163), 71.44 KiB | 189.00 KiB/s, done.
+Resolving deltas: 100% (43/43), done.
+```
+
+
+* Change to the "**springbootemployee-api**" directory
+
+```shell
+$ cd springbootemployee-api
+```
+
+* At this point let's go ahead and run our first "**snyk code test**" as shown below
+
+```shell
+❯ snyk code test
+
+Testing /Users/pasapicella/snyk/SE/workshops/snyk-code/springbootemployee-api ...
+
+ ✗ [High] SQL Injection
+     Path: src/main/java/pas/au/snyk/se/dao/AccountRestController.java, line 25
+     Info: Unsanitized input from the request URL flows into createQuery, where it is used in an SQL query. This may result in an SQL Injection vulnerability.
+
+ ✗ [High] Cross-site Scripting (XSS)
+     Path: src/main/java/pas/au/snyk/se/repository/CustomerRestController.java, line 58
+     Info: Unsanitized input from an HTTP parameter flows into here, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).
+
+
+✔ Test completed
+
+Organization:      undefined
+Test type:         Static code analysis
+Project path:      /Users/pasapicella/snyk/SE/workshops/snyk-code/springbootemployee-api
+
+2 Code issues found
+2 [High]
+```
+
+* This time lets run the "**snyk code test**" but get output data in JSON format.
+
+_Note: There is going to be much more output this time rather then the concise output from the previous test. This output gives you more or less the same information you see in the Snyk App UI_
+
+```shell
+❯ snyk code test --json
+{
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/master/Schemata/sarif-schema-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "SnykCode",
+          "semanticVersion": "1.0.0",
+          "version": "1.0.0",
+          "rules": [
+            {
+              "id": "java/Sqli",
+              "name": "Sqli",
+              "shortDescription": {
+                "text": "SQL Injection"
+              },
+              "defaultConfiguration": {
+                "level": "error"
+              },
+              "help": {
+                "markdown": "## Details\n\nIn an SQL injection attack, the user can submit an SQL query directly to the database, gaining access without providing appropriate credentials. Attackers can then view, export, modify, and delete confidential information; change passwords and other authentication information; and possibly gain access to other systems within the network. This is one of the most commonly exploited categories of vulnerability, but can largely be avoided through good coding practices.\n\n### Best practices for prevention\n* Avoid passing user-entered parameters directly to the SQL server.\n* When coding, define SQL code first, then pass in parameters. Use prepared statements with parameterized queries. Examples include `SqlCommand()` in .NET and `bindParam()` in PHP.\n* Use strong typing for all parameters so unexpected user data will be rejected.\n* Where direct user input cannot be avoided for performance reasons, validate input against a very strict allowlist of permitted characters, avoiding special characters such as `? & / < > ; -` and spaces. Use a vendor-supplied escaping routine if possible.\n* Develop your application in an environment and/or using libraries that provide protection against SQL injection.\n* Harden your entire environment around a least-privilege model, ideally with isolated accounts with privileges only for particular tasks.",
+                "text": ""
+              },
+              "properties": {
+                "tags": [
+                  "java",
+                  "maintenance",
+                  "bug",
+                  "table",
+                  "query",
+                  "database"
+                ],
+                "categories": [
+                  "Security"
+                ],
+                "exampleCommitFixes": [
+                  {
+                    "commitURL": "https://github.com/BjoernKW/ZenQuery/commit/228bf9a728f7d85f5a1fea0cc9c896db3d8eb0e8?diff=split#diff-3fd2c91261df4fcc03ccb7e8c2fb4acaL44",
+                    "lines": [
+                    
+....
+
+
+            }
+          ],
+          "properties": {
+            "priorityScore": 770,
+            "priorityScoreFactors": [
+              {
+                "label": true,
+                "type": "hotFileCodeFlow"
+              },
+              {
+                "label": true,
+                "type": "fixExamples"
+              }
+            ]
+          }
+        }
+      ],
+      "properties": {
+        "coverage": [
+          {
+            "files": 17,
+            "isSupported": true,
+            "lang": "Java"
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+* Finally, fork the Goof application if you wish to see more vulnerabilities and this time using JavaScript
+
+_Note: In the example below I set --severity-threshold=medium which means I only want to see issue that have a severity of medium or higher. This is how you would break a build in a CI pipeline using a "**snyk code**" test should vulnerabilities exist the exit code would be a non success exit code_
+
+```shell
+❯ git clone https://github.com/papicella/goof
+Cloning into 'goof'...
+remote: Enumerating objects: 2121, done.
+remote: Counting objects: 100% (15/15), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 2121 (delta 4), reused 5 (delta 0), pack-reused 2106
+Receiving objects: 100% (2121/2121), 4.30 MiB | 7.31 MiB/s, done.
+Resolving deltas: 100% (1438/1438), done.
+
+❯ cd goof
+
+❯ snyk code test --severity-threshold=medium
+
+Testing /Users/pasapicella/snyk/SE/workshops/snyk-code/goof ...
+
+ ✗ [Medium] Information Exposure
+     Path: app.js, line 27
+     Info: Disable X-Powered-By header for your Express app (consider using Helmet middleware), because it exposes information about the used framework to potential attackers.
+
+ ✗ [Medium] Use of Hard-coded Credentials
+     Path: typeorm-db.js, line 12
+     Info: Do not hardcode passwords in code. Found hardcoded password used in typeorm.createConnection.
+
+ ✗ [Medium] Use of Hard-coded Credentials
+     Path: mongoose-db.js, line 52
+     Info: Do not hardcode passwords in code. Found hardcoded password used in password.
+
+ ✗ [Medium] Use of Hard-coded Credentials
+     Path: typeorm-db.js, line 11
+     Info: Do not hardcode credentials in code. Found hardcoded credential used in typeorm.createConnection.
+
+ ✗ [Medium] Allocation of Resources Without Limits or Throttling
+     Path: routes/index.js, line 77
+     Info: This endpoint handler performs a system command execution and does not use a rate-limiting mechanism. It may enable the attackers to perform Denial-of-service attacks. Consider using a rate-limiting middleware such as express-limit.
+
+ ✗ [Medium] Allocation of Resources Without Limits or Throttling
+     Path: routes/index.js, line 166
+     Info: This endpoint handler performs a file system operation and does not use a rate-limiting mechanism. It may enable the attackers to perform Denial-of-service attacks. Consider using a rate-limiting middleware such as express-limit.
+
+ ✗ [Medium] Allocation of Resources Without Limits or Throttling
+     Path: routes/index.js, line 223
+     Info: This endpoint handler performs a file system operation and does not use a rate-limiting mechanism. It may enable the attackers to perform Denial-of-service attacks. Consider using a rate-limiting middleware such as express-limit.
+
+ ✗ [Medium] Cleartext Transmission of Sensitive Information
+     Path: app.js, line 12
+     Info: http (used in require) is an insecure protocol and should not be used in new code.
+
+ ✗ [High] Cross-site Scripting (XSS)
+     Path: routes/index.js, line 109
+     Info: Unsanitized input from the HTTP request body flows into send, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).
+
+ ✗ [High] Hardcoded Secret
+     Path: app.js, line 73
+     Info: Avoid hardcoding values that are meant to be secret. Found a hardcoded string used in here.
+
+ ✗ [High] SQL Injection
+     Path: routes/index.js, line 39
+     Info: Unsanitized input from the HTTP request body flows into find, where it is used in an SQL query. This may result in an SQL Injection vulnerability.
+
+ ✗ [High] Command Injection
+     Path: routes/index.js, line 86
+     Info: Unsanitized input from the HTTP request body flows into child_process.exec, where it is used to build a shell command. This may result in a Command Injection vulnerability.
+
+
+✔ Test completed
+
+Organization:      undefined
+Test type:         Static code analysis
+Project path:      /Users/pasapicella/snyk/SE/workshops/snyk-code/goof
+
+12 Code issues found
+4 [High]  8 [Medium]
+```
 
 ## Step 6 Snyk Code Test using VS Code
 
+IDE integrations use Snyk Code’s fast analysis and response, allowing you to spot an issue, understand and learn more about it, and fix it, as you write the code before you check the code in. So you can find possible security flaws in your code as you write it, on a line-by-line basis.
 
+Snyk Code supports a Visual Studio Code plugin to support issue finding and fixing, directly from the IDE:
+
+* With your already clone 
 
 Thanks for attending and completing this workshop
 
