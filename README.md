@@ -4,7 +4,7 @@ Snyk Code is developer-first, embedding SAST as part of the development process,
 
 In this **hands-on** workshop we will achieve the follow:
 
-* Step 1 Fork a GitHub repository
+* [Step 1 Fork a GitHub repository](#step-1-fork-a-github-repository)
 * Step 2 Configure GitHub Integration
 * Step 3 Enable Snyk Code within Snyk App
 * Step 4 Add project to find Snyk Code Vulnerabilities
@@ -335,9 +335,20 @@ Project path:      /Users/pasapicella/snyk/SE/workshops/snyk-code/goof
 
 IDE integrations use Snyk Code’s fast analysis and response, allowing you to spot an issue, understand and learn more about it, and fix it, as you write the code before you check the code in. So you can find possible security flaws in your code as you write it, on a line-by-line basis.
 
-Snyk Code supports a Visual Studio Code plugin to support issue finding and fixing, directly from the IDE:
+Snyk Code supports a VS Code plugin to support issue finding and fixing, directly from the IDE:
 
-* With your already clone 
+* Open VS Code from the "**springbootemployee-api**" directory so it's files appear in VS Code
+
+![alt tag](https://i.ibb.co/CBKFZt1/snyk-code-8.png)
+
+* Install the VS Code Snyk plugin using the link below
+
+[https://docs.snyk.io/features/integrations/ide-tools/visual-studio-code-extension-for-snyk-code](https://docs.snyk.io/features/integrations/ide-tools/visual-studio-code-extension-for-snyk-code)
+
+* Using the Snyk Icon on the left hand side let's run a "Snyk Code" Test as shown below
+
+![alt tag](https://i.ibb.co/xGHf2Tx/snyk-code-9.png)
+
 
 Thanks for attending and completing this workshop
 
