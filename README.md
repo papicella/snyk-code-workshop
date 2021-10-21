@@ -2,6 +2,10 @@
 
 Snyk Code is developer-first, embedding SAST as part of the development process, enabling developers to build software securely during development, not trying to find and fix problems after the code is compiled. Snyk Code works in the IDEs and SCMs developers use to build and review software and provides fast, actionable, meaningful results to fix issues in real-time
 
+At the time of this workshop creation Snyk Code supports the following languages and frameworks:
+
+[https://docs.snyk.io/products/snyk-code/snyk-code-language-and-framework-support](https://docs.snyk.io/products/snyk-code/snyk-code-language-and-framework-support)
+
 In this **hands-on** workshop we will achieve the follow:
 
 * [Step 1 Fork a GitHub repository](#step-1-fork-a-github-repository)
