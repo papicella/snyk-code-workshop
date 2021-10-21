@@ -5,11 +5,11 @@ Snyk Code is developer-first, embedding SAST as part of the development process,
 In this **hands-on** workshop we will achieve the follow:
 
 * [Step 1 Fork a GitHub repository](#step-1-fork-a-github-repository)
-* Step 2 Configure GitHub Integration
-* Step 3 Enable Snyk Code within Snyk App
-* Step 4 Add project to find Snyk Code Vulnerabilities
-* Step 5 Snyk Code CLI Test
-* Step 6 Snyk Code Test using VS Code
+* [Step 2 Configure GitHub Integration](#step-2-configure-github-integration)
+* [Step 3 Enable Snyk Code within Snyk App](#step-3-enable-snyk-code-within-snyk-app)
+* [Step 4 Add project to find Snyk Code Vulnerabilities](#step-4-add-project-to-find-snyk-code-vulnerabilities)
+* [Step 5 Snyk Code CLI Test](#step-5-snyk-code-cli-test)
+* [Step 6 Snyk Code Test using VS Code](#step-6-snyk-code-test-using-vs-code)
 
 ## Prerequisites
 
