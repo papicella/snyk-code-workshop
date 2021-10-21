@@ -100,6 +100,7 @@ Snyk products all provide a developer-friendly experience, so Snyk Code helps de
 
 ## Step 5 Snyk Code CLI Test
 
+TODO://
 
 ## Step 6 Snyk Code Test using VS Code
 
