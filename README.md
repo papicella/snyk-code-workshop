@@ -57,10 +57,47 @@ Now that Snyk is connected to your GitHub Account, import the Forked Repo "**spr
 * Navigate to Projects
 * Click "**Add Project**" then select "**GitHub**"
 * Click on the Repo you forked "**springbootemployee-api**"
+* Click "**Add Selected Repositories**"
 
-![alt tag](https://i.ibb.co/pWJW1VK/snyk-iac-1.png)
+![alt tag](https://i.ibb.co/TmKzh1P/snyk-code-3.png)
 
-* 
+* Once complete you should see a "**Code Analysis**" project as shown below
+
+_Note: There are only 2 code security issues , this is deliberate, and we will try "**Snyk Code**" on more vulnerable projects shortly_
+
+![alt tag](https://i.ibb.co/VTHNzdd/snyk-code-4.png)
+
+* Click on "**Code Analysis**" to view our SAST scan results
+
+For each Vulnerability, Snyk displays the following:
+
+1. Each Vulnerability grouped by severity
+2. Each Vulnerability links to the CWE category code
+3. Each Vulnerability shows the CWE category name
+4. Displays the line of code where the security issue exists
+5. Description for the issue and the code file name it exists in
+6. A link to a Snyk Learn module on how to fix these type of vulnerabilities if available
+7. The ability to ignore issues you wish to remove from the list
+
+![alt tag](https://i.ibb.co/y604yRW/snyk-code-5.png)
+
+* Click on the "**Full Details**" button as shown below
+
+Snyk products all provide a developer-friendly experience, so Snyk Code helps developers to quickly understand the problem, learn the background, and how to approach it. Snyk Code helps you understand the dangerous code flow step-by-step. For every issue, Code also provides a link to the lines in the relevant files, to view more details on the problem like the CWE, and how to approach it.
+
+![alt tag](https://i.ibb.co/QXDrfM9/snyk-code-6.png)
+
+* Click on "**Fix Analysis**" to see how you can fix the issue based on other open source project. On this page you get not just source code example fixes but also the following detailed information
+
+1. Details
+2. Types Of Attacks
+3. Affected Environments
+4. How to prevent
+
+![alt tag](https://i.ibb.co/R7QF6Ty/snyk-code-7.png)
+
+###Do you think you could fix this issue now?
+
 ## Step 5 Snyk Code CLI Test
 
 
