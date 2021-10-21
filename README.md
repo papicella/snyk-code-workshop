@@ -177,7 +177,7 @@ Project path:      /Users/pasapicella/snyk/SE/workshops/snyk-code/springbootempl
 
 * This time lets run the "**snyk code test**" but get output data in JSON format.
 
-_Note: There is going to be much more output this time rather then the concise output from the previous test. This output gives you more or less the same information you see in the Snyk App UI_
+_Note: There is going to be much more output this time rather than the concise output from the previous test._
 
 ```shell
 ❯ snyk code test --json
