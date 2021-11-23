@@ -69,7 +69,7 @@ Now that Snyk is connected to your GitHub Account, import the Forked Repo "**spr
 
 _Note: There are only 2 code security issues , this is deliberate, and we will try "**Snyk Code**" on more vulnerable projects shortly_
 
-![alt tag](https://i.ibb.co/VTHNzdd/snyk-code-4.png)
+![alt tag](https://i.ibb.co/ZfddWxb/snyk-code-4.png)
 
 * Click on "**Code Analysis**" to view our SAST scan results
 
@@ -83,13 +83,13 @@ For each Vulnerability, Snyk displays the following:
 6. A link to a Snyk Learn module on how to fix these type of vulnerabilities if available
 7. The ability to ignore issues you wish to remove from the list
 
-![alt tag](https://i.ibb.co/y604yRW/snyk-code-5.png)
+![alt tag](https://i.ibb.co/SJTXkDr/snyk-code-5.png)
 
 * Click on the "**Full Details**" button as shown below
 
 Snyk products all provide a developer-friendly experience, so Snyk Code helps developers to quickly understand the problem, learn the background, and how to approach it. Snyk Code helps you understand the dangerous code flow step-by-step. For every issue, Code also provides a link to the lines in the relevant files, to view more details on the problem like the CWE, and how to approach it.
 
-![alt tag](https://i.ibb.co/QXDrfM9/snyk-code-6.png)
+![alt tag](https://i.ibb.co/vwxw68k/snyk-code-6.png)
 
 * Click on "**Fix Analysis**" to see how you can fix the issue based on other open source project. On this page you get not just source code example fixes but also the following detailed information
 
@@ -98,9 +98,17 @@ Snyk products all provide a developer-friendly experience, so Snyk Code helps de
 3. Affected Environments
 4. How to prevent
 
-![alt tag](https://i.ibb.co/R7QF6Ty/snyk-code-7.png)
+![alt tag](https://i.ibb.co/25P6M7g/snyk-code-7.png)
 
 ### Do you think you could fix this issue now?
+
+Finally, if you have time go ahead and fork this repo and import this into Snyk App if you wish to see more code issues then the simple example we using here
+
+https://github.com/papicella/goof
+
+_Note: This may take a while as there are various other project files in this repo so you can always come back to this later to see the code results_
+
+![alt tag](https://i.ibb.co/CJDpRys/snyk-code-10.png)
 
 ## Step 5 Snyk Code CLI Test
 
@@ -160,9 +168,9 @@ Testing /Users/pasapicella/snyk/SE/workshops/snyk-code/springbootemployee-api ..
      Path: src/main/java/pas/au/snyk/se/dao/AccountRestController.java, line 25
      Info: Unsanitized input from the request URL flows into createQuery, where it is used in an SQL query. This may result in an SQL Injection vulnerability.
 
- ✗ [High] Cross-site Scripting (XSS)
-     Path: src/main/java/pas/au/snyk/se/repository/CustomerRestController.java, line 58
-     Info: Unsanitized input from an HTTP parameter flows into here, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).
+ ✗ [High] Use of Hard-coded, Security-relevant Constants
+     Path: src/main/java/pas/au/snyk/se/service/DatabaseService.java, line 8
+     Info: Avoid hardcoding values that are meant to be secret. Found hardcoded secret.
 
 
 ✔ Test completed
