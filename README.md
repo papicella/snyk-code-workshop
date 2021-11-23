@@ -343,6 +343,10 @@ Project path:      /Users/pasapicella/snyk/SE/workshops/snyk-code/goof
 4 [High]  8 [Medium]
 ```
 
+It's worth noting snyk code supports multiple programming languages with the list growing. Please review this page for more details about language and framework support.
+
+[Snyk Code language and framework support](https://docs.snyk.io/products/snyk-code/snyk-code-language-and-framework-support)
+
 ## Step 6 Snyk Code Test using VS Code
 
 IDE integrations use Snyk Code’s fast analysis and response, allowing you to spot an issue, understand and learn more about it, and fix it, as you write the code before you check the code in. So you can find possible security flaws in your code as you write it, on a line-by-line basis.
