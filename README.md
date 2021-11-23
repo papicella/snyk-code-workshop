@@ -112,7 +112,7 @@ _Note: This may take a while as there are various other project files in this re
 
 ## Step 5 Snyk Code CLI Test
 
-In addition to the Snyk App UI we also have, snyk - CLI and build-time tool to find & fix known vulnerabilities in open-source dependencies, IaC configuration files and SAST scans on the source code files itself (Snyk Code).
+In addition to the Snyk App UI we also have, snyk - CLI a build-time tool to find & fix known vulnerabilities in open-source dependencies, IaC configuration files and SAST scans on the source code files itself (Snyk Code).
 
 _Note: Please ensure you have the latest version of the Snyk CLI installed a version equal to or greater than the version below_
 
